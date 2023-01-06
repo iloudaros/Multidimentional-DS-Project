@@ -154,6 +154,30 @@ class Rtree:
         else:
             for entry in node.entries:
                 yield entry.getEntryBox()
+    
+    def query(self, t0: float, t1: float):
+        """Query The tree for a specifi timeframe and retrun all data points."""
+        points = []
+
+        # Create query box.
+        xmin = self.root.getMBB().x1
+        xmax = self.root.getMBB().x2
+        ymin = self.root.getMBB().y1
+        ymax = self.root.getMBB().y2
+
+        query_box = Box(xmin, ymin, t0, xmax, ymax, t1)
+        
+        boxes = [box for box in self.getNodesBox(self.root)]
+        for box in boxes:
+            x1, y1, z1, x2, y2, z2 = box.getCoordinates()
+
+            if x1 == x2 and y1 == y2 and z1 == z2:
+                
+                # Get only overlaping boxes
+                if box.overlaps(query_box):
+                    points.append(box)
+
+        return points
 
 
 def MBB(boxes: "Box" = []) -> "Box":

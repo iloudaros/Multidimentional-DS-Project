@@ -10,15 +10,15 @@
 
 ```
 .
-|--Contibutions            # Η συνεισφορά του καθενός μας σε επίπεδο κώδικα.
+|--Contibutions     # Η συνεισφορά του καθενός μας σε επίπεδο κώδικα.
 |  |--iloudaros
 |  |--alekarakos
 |  |--koutou
 |  |--psergiannis
 |
-|--Demo										 # Το Demo που παραδώσαμε.
+|--Demo     # Το Demo που παραδώσαμε.
 |
-|--Documentation 					 # Η αναφορά που παραδώσαμε μαζί με το Demo.
+|--Documentation      # Η αναφορά που παραδώσαμε μαζί με το Demo.
 ```
 
 

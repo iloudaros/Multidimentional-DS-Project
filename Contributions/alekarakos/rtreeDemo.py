@@ -1,8 +1,9 @@
-from point import Point
-from rtree import Rtree
+from .point import Point
+from .rtree import Rtree
 import matplotlib.pyplot as plt
 import csv
 import time
+import os
 
 
 def visualizeRtree(tree: "Rtree"):
@@ -92,7 +93,8 @@ def visualizeQuery(tree: "Rtree", t0, t1):
 def bulkInsert(tree: "Rtree"):
     """Inserts all the trajectory data to a 3D R-tree"""
 
-    with open("trajectory-data.csv", "r") as f:
+    file_path = os.path.join(os.path.dirname(__file__), "sparse-data.csv")
+    with open(file_path, "r") as f:
         reader = csv.reader(f)
         # Skip first line
         next(reader)
@@ -108,6 +110,11 @@ def bulkInsert(tree: "Rtree"):
         print(f"Inserted all data points in {end-start} seconds.")
 
 
+def Demo():
+    tree = Rtree()
+    bulkInsert(tree)
+    visualizeRtree(tree)
+    
 if __name__ == "__main__":
 
     tree = Rtree()

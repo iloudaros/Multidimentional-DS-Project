@@ -2,7 +2,7 @@
 This file contains the declaration of the Point class.
 A point hold the x,y,t values of a trajectory for a specific t.
 """
-from box import Box
+from .box import Box
 
 
 class Point:

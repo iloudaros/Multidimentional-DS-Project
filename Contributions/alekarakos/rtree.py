@@ -1,5 +1,5 @@
-from point import Point
-from box import Box
+from .point import Point
+from .box import Box
 from math import fabs
 
 """

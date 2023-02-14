@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import bisect
 
 from random import random
-from Geo_Data import *
-from Data_structures import *
+from .Geo_Data import *
+from .Data_structures import *
 
 
 # Η συνάρτηση ελέγχει αν υπάρχει τομή μεταξύ των ευθυγράμμων τμημάτων (p1, p2) και (p3, p4)

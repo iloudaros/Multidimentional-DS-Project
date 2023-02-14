@@ -1,5 +1,7 @@
 import tkinter as tk
 from alekarakos import rtreeDemo
+from koutou import convex_hull
+from iloudaros import lsi_demo
 
 def create_window():
     # Create a new window
@@ -52,12 +54,14 @@ def create_window():
     button1.pack(side="top", pady=10)
     button1['command'] = rtreeDemo.Demo
     button2.pack(side="top", pady=10)
+    button2['command'] = convex_hull.Demo
     button3.pack(side="top", pady=10)
     button4.pack(side="top", pady=10)
+    button4['command'] = lsi_demo.Demo
 
     # Start the main event loop
     window.mainloop()
 
 
-create_window()
-# rtreeDemo.Demo()
+if __name__ == '__main__':
+    create_window()

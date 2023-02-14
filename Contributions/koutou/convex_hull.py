@@ -54,8 +54,9 @@ def visualize(points, hull):
     plt.plot(hx, hy, "r-")  
     plt.show()
 
-# Test 
-num_points = 20
-points = [Point(x=random.uniform(0, 10), y=random.uniform(0, 10)) for _ in range(num_points)]
-hull = convex_hull(points)
-visualize(points, hull)
+def Demo():
+    # Test 
+    num_points = 20
+    points = [Point(x=random.uniform(0, 10), y=random.uniform(0, 10)) for _ in range(num_points)]
+    hull = convex_hull(points)
+    visualize(points, hull)

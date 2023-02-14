@@ -1,4 +1,4 @@
-from Data_structures import *
+from .Data_structures import *
 
 lake = Polygon((2.5, 3), (3, 4), (4, 3), (4, 2), (2.5, 3))
 country1 =Polygon((1, 1), (1.8, 1.95), (3, 1), (3, 2.91), (2.1, 5), (0.8, 5), (1, 3),(1, 1))

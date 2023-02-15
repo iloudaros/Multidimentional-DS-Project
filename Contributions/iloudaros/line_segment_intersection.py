@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import bisect
 from random import random
+
+
 from .Geo_Data import *
 from .Data_structures import *
 

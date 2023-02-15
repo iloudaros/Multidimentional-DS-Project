@@ -16,6 +16,11 @@ class Line:
         return (self.end[1] - self.start[1]) / (self.end[0] - self.start[0])
 
 
+def slope(p1, p2):
+    return (p2[1] - p1[1]) / (p2[0] - p1[0])
+
+
+
 class Event:
     def __init__(self, x, y, lines):
         self.x = x
@@ -26,10 +31,6 @@ class Event:
         if self.y == other.y:
             return self.x < other.x
         return self.y < other.y
-
-
-def slope(p1, p2):
-    return (p2[1] - p1[1]) / (p2[0] - p1[0])
 
 
 class Polygon:
@@ -47,3 +48,4 @@ class Polygon:
         return lines
 
 
+    

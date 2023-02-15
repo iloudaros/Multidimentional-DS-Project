@@ -9,13 +9,13 @@ def create_window():
 
     BACKGROUND_C = "#342A20"
 
-    BACKGROUND_BT = "#C2A47D"
-    FOREGROUND__BT = "#FFFFFF"
+    BACKGROUND_BT = "#B4894F"
+    FOREGROUND__BT = "#000000"
     BUTTON_HOVER_BG_COLOR = "#B4894F"
-    BUTTON_HOVER_FG_COLOR = "#FFFFFF"
+    BUTTON_HOVER_FG_COLOR = "#C2A47D"
 
     # Set the title of the window
-    window.title("My Window")
+    window.title("Multidimentional Data Structures Demo")
 
     # Set the size of the window
     window.geometry("600x350")
@@ -24,7 +24,7 @@ def create_window():
     window.configure(background=BACKGROUND_C)
 
     # Create a label widget
-    label = tk.Label(window, text="Hello, World!", font=("Arial", 24), bg=BACKGROUND_C)
+    label = tk.Label(window, text="Επιλέξτε το ερώτημα που σας ενδιαφέρει:", font=("Arial", 24), bg=BACKGROUND_C)
 
     # Pack the label widget to the top of the window
     label.pack(side="top", pady=20)

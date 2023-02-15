@@ -19,3 +19,5 @@ def Demo():
     for x in intersection_points_1:
         plt.plot(*x, 'ok', markersize=10)
     plt.show()
+    
+    

@@ -1,7 +1,13 @@
 import tkinter as tk
+import sys
+ 
+sys.path.insert(0, 'Contributions')
+
 from alekarakos import rtreeDemo
 from koutou import convex_hull
 from iloudaros import lsi_demo
+
+
 
 def create_window():
     # Create a new window

@@ -66,37 +66,49 @@ def pol_interesect_naive(polygon1, polygon2):
 
 
 
+def sweep_line_intersect(polygon1, polygon2):
+
+  # Get lines from polygons
+  lines1 = polygon1.lines()
+  lines2 = polygon2.lines()
+
+  # Create events from all line endpoints
+  events = []
+  for line in lines1 + lines2:
+    events.append(Event(line.start[0], line.start[1], True, [line]))
+    events.append(Event(line.end[0], line.end[1], False, [line]))
+
+  # Sort events by x coordinate
+  events.sort()
+
+  # Active line segments
+  active_lines = []
+
+  # Intersection points
+  intersections = []
+
+  # Sweep line algorithm
+  for event in events:
+
+    if event.is_left_endpoint():
+      # Insert segment in active lines
+      active_lines.append(event.line)
+
+    else:
+      # Remove segment from active lines
+      active_lines.remove(event.line)
+
+    # Check intersections between active segments
+    for l1 in active_lines:
+      for l2 in active_lines:
+        if l1 is not l2:
+          temp = intersect(l1, l2)
+          if temp:
+            intersections.append(intersect)
+
+  return intersections
 
 
 
 
-def sweep_line(lines):
-	events = []
-	for line in lines:
-		events.append(Event(line.start[0], line.start[1], [line]))
-		events.append(Event(line.end[0], line.end[1], [line]))
-	events.sort()
-	active_lines = []
-	intersections = []
-	for event in events:
-		for line in event.lines:
-			if event.y == line.start[1]:
-				i = bisect.bisect_left(active_lines, line)
-				if i > 0 and slope(active_lines[i-1].end, active_lines[i-1].start) == slope(line.end, line.start):
-					continue
-				if i < len(active_lines) - 1 and slope(active_lines[i+1].end, active_lines[i+1].start) == slope(line.end, line.start):
-					continue
-				bisect.insort_left(active_lines, line)
-			else:
-				active_lines.remove(line)
-				for i in range(len(active_lines) - 1):
-					for j in range(i+1, len(active_lines)):
-						line1 = active_lines[i]
-						line2 = active_lines[j]
-						intersection = intersect(line1, line2)
-						if intersection:
-							x, y = intersection
-							if x >= min(line1.start[0], line1.end[0]) and x <= max(line1.start[0], line1.end[0]) and x >= min(line2.start[0], line2.end[0]) and x <= max(line2.start[0], line2.end[0]):
-								intersections.append((x, y))
-	return intersections
 

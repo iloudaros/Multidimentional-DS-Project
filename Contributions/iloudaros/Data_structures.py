@@ -22,6 +22,9 @@ def slope(p1, p2):
 
 
 class Event:
+    x = float
+    y = float
+    lines = [Line]
     def __init__(self, x, y, lines):
         self.x = x
         self.y = y
@@ -31,6 +34,10 @@ class Event:
         if self.y == other.y:
             return self.x < other.x
         return self.y < other.y
+    
+    def is_left_endpoint(self):
+        return self.lines[0].start == (self.x, self.y)
+
 
 
 class Polygon:

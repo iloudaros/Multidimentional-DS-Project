@@ -66,49 +66,44 @@ def pol_interesect_naive(polygon1, polygon2):
 
 
 
-def sweep_line_intersect(polygon1, polygon2):
+def pol_intersect_sweep_line(polygon1, polygon2):
+	# Define a list of all the edges in both polygons
+	edges = []
+	for i in range(len(polygon1) - 1):
+		edges.append((polygon1[i], polygon1[i+1]))
+	for i in range(len(polygon2) - 1):
+		edges.append((polygon2[i], polygon2[i+1]))
 
-  # Get lines from polygons
-  lines1 = polygon1.lines()
-  lines2 = polygon2.lines()
+	# Sort the edges by their x-coordinate
+	edges.sort(key=lambda edge: edge[0][0])
 
-  # Create events from all line endpoints
-  events = []
-  for line in lines1 + lines2:
-    events.append(Event(line.start[0], line.start[1], True, [line]))
-    events.append(Event(line.end[0], line.end[1], False, [line]))
+	# Define a list of active edges
+	active_edges = []
 
-  # Sort events by x coordinate
-  events.sort()
+	# Define a list of intersection points
+	intersection_points = []
 
-  # Active line segments
-  active_lines = []
+	# Define the sweep line
+	sweep_line = float('-inf')
 
-  # Intersection points
-  intersections = []
+	# Loop through the edges
+	for edge in edges:
+		# If the edge's left endpoint is to the right of the sweep line, remove it from the active edges
+		while active_edges and active_edges[0][1][0] < sweep_line:
+			active_edges.pop(0)
 
-  # Sweep line algorithm
-  for event in events:
+		# If the edge's left endpoint is to the left of the sweep line, add it to the active edges
+		if edge[0][0] < sweep_line:
+			active_edges.append(edge)
 
-    if event.is_left_endpoint():
-      # Insert segment in active lines
-      active_lines.append(event.line)
+		# Loop through the active edges and check for intersections
+		for active_edge in active_edges:
+			intersection = intersect(Line(edge[0], edge[1]), Line(active_edge[0], active_edge[1]))
+			if intersection is not None:
+				intersection_points.append(intersection)
 
-    else:
-      # Remove segment from active lines
-      active_lines.remove(event.line)
+		# Update the sweep line
+		sweep_line = edge[0][0]
 
-    # Check intersections between active segments
-    for l1 in active_lines:
-      for l2 in active_lines:
-        if l1 is not l2:
-          temp = intersect(l1, l2)
-          if temp:
-            intersections.append(intersect)
-
-  return intersections
-
-
-
-
-
+	# Return the intersection points
+	return intersection_points

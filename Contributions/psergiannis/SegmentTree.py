@@ -105,6 +105,8 @@ class SegmentTree:
 
 
 def demo_segment_tree():
+    print("Segment Tree:")
+
     # Create synthetic dataset
     n = 20
     arr = [random.randint(1, 100) for _ in range(n)]

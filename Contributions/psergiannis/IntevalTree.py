@@ -132,82 +132,100 @@ def visualize_tree(node, graph=None):
     return graph
 
 
-# Create synthetic dataset
-intervals = [(random.randint(0, 50), random.randint(51, 100)) for _ in range(20)]
+def demo_interval_tree():
+    # Create synthetic dataset
+    intervals = [(random.randint(0, 50), random.randint(51, 100)) for _ in range(20)]
 
-# Initialize IntervalTree and build it
-tree = IntervalTree()
+    # Initialize IntervalTree and build it
+    tree = IntervalTree()
 
-# Measure build memory usage
-mem_usage_before = memory_usage()[0]
-build_time = timeit.timeit(lambda: tree.build(intervals), number=1)
-mem_usage_after = memory_usage()[0]
-mem_diff = mem_usage_after - mem_usage_before
-print(f"Memory used to build the tree: {max(0, mem_diff):.10f} MiB")
-print(f"Time taken to build the tree: {build_time:.10f} seconds")
-
-# Visualize the tree after build
-visualize_tree(tree.root).render(
-    filename="interval_tree_build", format="png", cleanup=True
-)
-
-# Create a list of new intervals to insert
-new_intervals = [(15, 30), (32, 45), (5, 20)]
-
-# Measure time and memory and insert the new intervals
-for new_interval in new_intervals:
+    # Measure build memory usage
     mem_usage_before = memory_usage()[0]
-    insert_time = timeit.timeit(lambda: tree.insert(tree.root, new_interval), number=1)
+    build_time = timeit.timeit(lambda: tree.build(intervals), number=1)
     mem_usage_after = memory_usage()[0]
     mem_diff = mem_usage_after - mem_usage_before
-    print(f"Memory used to insert interval {new_interval}: {max(0, mem_diff):.10f} MiB")
-    print(f"Time taken to insert interval {new_interval}: {insert_time:.10f} seconds")
+    print(f"Memory used to build the tree: {max(0, mem_diff):.10f} MiB")
+    print(f"Time taken to build the tree: {build_time:.10f} seconds")
 
-# Visualize the tree after insert
-visualize_tree(tree.root).render(
-    filename="interval_tree_insert", format="png", cleanup=True
-)
+    # Visualize the tree after build
+    visualize_tree(tree.root).render(
+        filename="interval_tree_build", format="png", cleanup=True
+    )
 
-# Test deletion
-delete_interval = (32, 45)  # Modify with an actual interval from your tree
-mem_usage_before = memory_usage()[0]
-delete_time = timeit.timeit(lambda: tree.delete(delete_interval), number=1)
-mem_usage_after = memory_usage()[0]
-mem_diff = mem_usage_after - mem_usage_before
-print(f"Memory used to delete interval {delete_interval}: {max(0, mem_diff):.10f} MiB")
-print(f"Time taken to delete an interval: {delete_time:.10f} seconds")
+    # Create a list of new intervals to insert
+    new_intervals = [(15, 30), (32, 45), (5, 20)]
 
-# Visualize the tree after delete
-visualize_tree(tree.root).render(
-    filename="interval_tree_delete", format="png", cleanup=True
-)
+    # Measure time and memory and insert the new intervals
+    for new_interval in new_intervals:
+        mem_usage_before = memory_usage()[0]
+        insert_time = timeit.timeit(
+            lambda: tree.insert(tree.root, new_interval), number=1
+        )
+        mem_usage_after = memory_usage()[0]
+        mem_diff = mem_usage_after - mem_usage_before
+        print(
+            f"Memory used to insert interval {new_interval}: {max(0, mem_diff):.10f} MiB"
+        )
+        print(
+            f"Time taken to insert interval {new_interval}: {insert_time:.10f} seconds"
+        )
 
-# Test update
-old_interval = (15, 30)  # Modify with an actual interval from your tree
-new_interval = (24, 100)  # Modify with the desired new interval
-mem_usage_before = memory_usage()[0]
-update_time = timeit.timeit(lambda: tree.update(old_interval, new_interval), number=1)
-mem_usage_after = memory_usage()[0]
-mem_diff = mem_usage_after - mem_usage_before
-print(
-    f"Memory used to update interval {old_interval} to {new_interval}: {max(0, mem_diff):.10f} MiB"
-)
-print(f"Time taken to update an interval: {update_time:.10f} seconds")
+    # Visualize the tree after insert
+    visualize_tree(tree.root).render(
+        filename="interval_tree_insert", format="png", cleanup=True
+    )
 
-# Visualize the tree after update
-visualize_tree(tree.root).render(
-    filename="interval_tree_update", format="png", cleanup=True
-)
+    # Test deletion
+    delete_interval = (32, 45)  # Modify with an actual interval from your tree
+    mem_usage_before = memory_usage()[0]
+    delete_time = timeit.timeit(lambda: tree.delete(delete_interval), number=1)
+    mem_usage_after = memory_usage()[0]
+    mem_diff = mem_usage_after - mem_usage_before
+    print(
+        f"Memory used to delete interval {delete_interval}: {max(0, mem_diff):.10f} MiB"
+    )
+    print(f"Time taken to delete an interval: {delete_time:.10f} seconds")
 
-# Test search
-search_interval = (10, 20)
-mem_usage_before = memory_usage()[0]
-search_time = timeit.timeit(lambda: tree.search(tree.root, search_interval), number=1)
-mem_usage_after = memory_usage()[0]
-mem_diff = mem_usage_after - mem_usage_before
-print(f"Memory used to search an interval: {max(0, mem_diff):.10f} MiB")
-print(f"Time taken to search an interval: {search_time:.10f} seconds")
+    # Visualize the tree after delete
+    visualize_tree(tree.root).render(
+        filename="interval_tree_delete", format="png", cleanup=True
+    )
 
-# Execute and print the result of the search
-found_interval = tree.search(tree.root, search_interval)
-print(f"Found interval that intersects with {search_interval}: {found_interval}")
+    # Test update
+    old_interval = (15, 30)  # Modify with an actual interval from your tree
+    new_interval = (24, 100)  # Modify with the desired new interval
+    mem_usage_before = memory_usage()[0]
+    update_time = timeit.timeit(
+        lambda: tree.update(old_interval, new_interval), number=1
+    )
+    mem_usage_after = memory_usage()[0]
+    mem_diff = mem_usage_after - mem_usage_before
+    print(
+        f"Memory used to update interval {old_interval} to {new_interval}: {max(0, mem_diff):.10f} MiB"
+    )
+    print(f"Time taken to update an interval: {update_time:.10f} seconds")
+
+    # Visualize the tree after update
+    visualize_tree(tree.root).render(
+        filename="interval_tree_update", format="png", cleanup=True
+    )
+
+    # Test search
+    search_interval = (10, 20)
+    mem_usage_before = memory_usage()[0]
+    search_time = timeit.timeit(
+        lambda: tree.search(tree.root, search_interval), number=1
+    )
+    mem_usage_after = memory_usage()[0]
+    mem_diff = mem_usage_after - mem_usage_before
+    print(f"Memory used to search an interval: {max(0, mem_diff):.10f} MiB")
+    print(f"Time taken to search an interval: {search_time:.10f} seconds")
+
+    # Execute and print the result of the search
+    found_interval = tree.search(tree.root, search_interval)
+    print(f"Found interval that intersects with {search_interval}: {found_interval}")
+
+
+# Call the demo function to run the code
+if __name__ == "__main__":
+    demo_interval_tree()

@@ -6,6 +6,7 @@ sys.path.insert(0, 'Contributions')
 from alekarakos import rtreeDemo
 from koutou import convex_hull
 from iloudaros import lsi_demo
+from psergiannis import segment_interval_trees_demo
 
 
 
@@ -62,6 +63,7 @@ def create_window():
     button2.pack(side="top", pady=10)
     button2['command'] = convex_hull.Demo
     button3.pack(side="top", pady=10)
+    button3['command'] = segment_interval_trees_demo.Demo
     button4.pack(side="top", pady=10)
     button4['command'] = lsi_demo.Demo
 

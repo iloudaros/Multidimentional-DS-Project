@@ -1,0 +1,104 @@
+Interval Trees:
+
+Για n=20
+Memory used to build the tree: 0.0195312500 MiB
+Time taken to build the tree: 0.0002216999 seconds
+Memory used to insert interval (15, 30): 0.0039062500 MiB
+Time taken to insert interval (15, 30): 0.0000528001 seconds
+Memory used to insert interval (32, 45): 0.0039062500 MiB
+Time taken to insert interval (32, 45): 0.0000290000 seconds
+Memory used to insert interval (5, 20): 0.0000000000 MiB
+Time taken to insert interval (5, 20): 0.0000164000 seconds
+Memory used to delete interval (32, 45): 0.0000000000 MiB
+Time taken to delete an interval: 0.0001052000 seconds
+Memory used to update interval (15, 30) to (24, 100): 0.0000000000 MiB
+Time taken to update an interval: 0.0000931000 seconds
+Memory used to search an interval: 0.0000000000 MiB
+Time taken to search an interval: 0.0000805000 seconds
+
+Για n=1000
+Memory used to build the tree: 0.1289062500 MiB
+Time taken to build the tree: 0.0226000000 seconds
+Memory used to insert interval (15, 30): 0.0039062500 MiB
+Time taken to insert interval (15, 30): 0.0000939000 seconds
+Memory used to insert interval (32, 45): 0.0000000000 MiB
+Time taken to insert interval (32, 45): 0.0000559000 seconds
+Memory used to insert interval (5, 20): 0.0000000000 MiB
+Time taken to insert interval (5, 20): 0.0000520999 seconds
+Memory used to delete interval (32, 45): 0.0000000000 MiB
+Time taken to delete an interval: 0.0001594000 seconds
+Memory used to update interval (15, 30) to (24, 100): 0.0000000000 MiB
+Time taken to update an interval: 0.0002062999 seconds
+Memory used to search an interval: 0.0078125000 MiB
+Time taken to search an interval: 0.0008636999 seconds
+
+Για n=5000
+Memory used to build the tree: 0.5351562500 MiB
+Time taken to build the tree: 0.4228657000 seconds
+Memory used to insert interval (15, 30): 0.0000000000 MiB
+Time taken to insert interval (15, 30): 0.0002634000 seconds
+Memory used to insert interval (32, 45): 0.0000000000 MiB
+Time taken to insert interval (32, 45): 0.0002305000 seconds
+Memory used to insert interval (5, 20): 0.0000000000 MiB
+Time taken to insert interval (5, 20): 0.0002086000 seconds
+Memory used to delete interval (32, 45): 0.0000000000 MiB
+Time taken to delete an interval: 0.0003974000 seconds
+Memory used to update interval (15, 30) to (24, 100): 0.0000000000 MiB
+Time taken to update an interval: 0.0005532999 seconds
+Memory used to search an interval: 0.0781250000 MiB
+Time taken to search an interval: 0.0044643000 seconds
+
+
+
+
+
+
+
+
+
+Segment Trees:
+
+Για n=20
+
+Memory used to build the tree: 0.0117187500 MiB
+Time taken to build the tree: 0.0000710001 seconds
+Memory used to insert an element: 0.0000000000 MiB
+Time taken to insert an element: 0.0001494001 seconds
+Memory used to delete an element: 0.0000000000 MiB
+Time taken to delete an element: 0.0001248000 seconds
+Memory used to update an element: 0.0000000000 MiB
+Time taken to update an element: 0.0000702000 seconds
+Memory used to perform a stabbing query: 0.0000000000 MiB
+Time taken to perform a stabbing query: 0.0001331000 seconds
+Memory used to perform a range query: 0.0078125000 MiB
+Time taken to perform a range query: 0.0000961999 seconds
+
+
+Για n=1000
+
+Memory used to build the tree: 0.0117187500 MiB
+Time taken to build the tree: 0.0024791000 seconds
+Memory used to insert an element: 0.0156250000 MiB
+Time taken to insert an element: 0.0046618001 seconds
+Memory used to delete an element: 0.0000000000 MiB
+Time taken to delete an element: 0.0032147000 seconds
+Memory used to update an element: 0.0000000000 MiB
+Time taken to update an element: 0.0001321000 seconds
+Memory used to perform a stabbing query: 0.0000000000 MiB
+Time taken to perform a stabbing query: 0.0001167000 seconds
+Memory used to perform a range query: 0.0000000000 MiB
+Time taken to perform a range query: 0.0001119999 seconds
+
+Για n=5000
+Memory used to build the tree: 0.0117187500 MiB
+Time taken to build the tree: 0.0124086000 seconds
+Memory used to insert an element: 0.2070312500 MiB
+Time taken to insert an element: 0.0259879001 seconds
+Memory used to delete an element: 0.0000000000 MiB
+Time taken to delete an element: 0.0200135000 seconds
+Memory used to update an element: 0.0000000000 MiB
+Time taken to update an element: 0.0000792000 seconds
+Memory used to perform a stabbing query: 0.0000000000 MiB
+Time taken to perform a stabbing query: 0.0001764001 seconds
+Memory used to perform a range query: 0.0039062500 MiB
+Time taken to perform a range query: 0.0001123000 seconds
